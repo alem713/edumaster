@@ -4,211 +4,180 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EduMaster | Образовательная платформа</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3a0ca3;
-            --accent-color: #7209b7;
-            --dark-color: #1a1a2e;
-            --light-color: #f8f9fa;
-        }
-
-        body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            color: var(--dark-color);
-        }
-
-        .header {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            background: var(--primary-color);
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
-
-        .hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 0 0 30px 30px;
-            margin-bottom: 3rem;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
-            background: white;
-            color: var(--primary-color);
-            font-weight: 600;
-            cursor: pointer;
-            margin: 0 10px;
-            transition: transform 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-
-        .card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            margin-bottom: 1rem;
-        }
-
-        .footer {
-            background: var(--dark-color);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://img.icons8.com/color/96/000000/graduation-cap.png">
 </head>
 <body>
+    <!-- Header -->
     <header class="header">
-        <a href="/" class="logo">
+        <a href="#" class="logo">
             <div class="logo-icon">🎓</div>
             EduMaster
         </a>
-        <div>
-            <button class="btn" onclick="showLogin()">Войти</button>
-            <button class="btn" style="background: var(--primary-color); color: white;" onclick="showRegister()">
-                Регистрация
-            </button>
+        
+        <nav class="nav-links">
+            <a href="#" class="nav-link active">Главная</a>
+            <a href="#courses" class="nav-link">Курсы</a>
+            <a href="#tasks" class="nav-link">Задачи</a>
+            <a href="#progress" class="nav-link">Прогресс</a>
+            <a href="#contact" class="nav-link">Контакты</a>
+        </nav>
+        
+        <div class="auth-buttons">
+            <button class="btn btn-outline" onclick="login()">Войти</button>
+            <button class="btn btn-primary" onclick="register()">Регистрация</button>
+        </div>
+        
+        <div class="user-menu" style="display: none;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div id="userAvatar" style="width: 40px; height: 40px; background: #4361ee; 
+                     color: white; border-radius: 50%; display: flex; 
+                     align-items: center; justify-content: center; font-weight: bold;">
+                    У
+                </div>
+                <span id="userName">Ученик</span>
+                <button onclick="logout()" style="background: none; border: none; 
+                        color: #666; cursor: pointer; font-size: 0.875rem;">
+                    (выйти)
+                </button>
+            </div>
         </div>
     </header>
 
+    <!-- Hero Section -->
     <section class="hero">
         <h1>Бесплатное образование для всех</h1>
-        <p style="margin: 1rem 0; font-size: 1.2rem;">Курсы для 1-11 классов с трекером задач и прогресса</p>
-        <button class="btn" style="background: white; padding: 1rem 2rem; font-size: 1.1rem;">
-            Начать учиться бесплатно
-        </button>
+        <p class="hero-subtitle">Персонализированные уроки, задачи и тесты для учеников 1-11 классов</p>
+        <div style="margin-top: 2rem;">
+            <button class="btn btn-primary" onclick="startCourse('математика')" 
+                    style="padding: 1rem 2rem; font-size: 1.1rem;">
+                🚀 Начать учиться бесплатно
+            </button>
+            <button class="btn btn-outline" onclick="showCourses()" 
+                    style="padding: 1rem 2rem; font-size: 1.1rem; margin-left: 1rem;">
+                📚 Смотреть курсы
+            </button>
+        </div>
     </section>
 
-    <div class="container">
-        <div class="cards-grid">
-            <div class="card">
-                <div class="card-icon">📚</div>
-                <h3>Курсы по классам</h3>
-                <p>От 1 до 11 класса по всем основным предметам</p>
+    <!-- Main Content -->
+    <main style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <!-- Features -->
+        <section>
+            <h2 style="text-align: center; font-size: 2rem; margin: 3rem 0 2rem;">Что мы предлагаем</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🔢</div>
+                    <h3>Математика</h3>
+                    <p style="margin: 1rem 0; color: var(--gray-color);">
+                        От арифметики до алгебры и геометрии
+                    </p>
+                    <button class="btn btn-primary" onclick="startCourse('математика')">
+                        Начать курс
+                    </button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">🧪</div>
+                    <h3>Наука</h3>
+                    <p style="margin: 1rem 0; color: var(--gray-color);">
+                        Физика, химия, биология для всех классов
+                    </p>
+                    <button class="btn btn-primary" onclick="startCourse('наука')">
+                        Изучать
+                    </button>
+                </div>
+                
+                <div class="card">
+                    <div class="card-icon">💻</div>
+                    <h3>Программирование</h3>
+                    <p style="margin: 1rem 0; color: var(--gray-color);">
+                        Основы Python и алгоритмов
+                    </p>
+                    <button class="btn btn-primary" onclick="startCourse('программирование')">
+                        Начать
+                    </button>
+                </div>
             </div>
-            
-            <div class="card">
-                <div class="card-icon">✅</div>
-                <h3>Трекер задач</h3>
-                <p>Отслеживайте домашние задания и дедлайны</p>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">📊</div>
-                <h3>Прогресс обучения</h3>
-                <p>Наглядная статистика успеваемости</p>
-            </div>
-        </div>
-    </div>
+        </section>
 
-    <footer class="footer">
-        <p>© 2024 EduMaster. Все права защищены.</p>
-        <p style="margin-top: 1rem; opacity: 0.8;">Образовательная платформа для учеников Казахстана</p>
+        <!-- Task Tracker -->
+        <section id="tasks" class="task-tracker">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="font-size: 1.75rem; color: var(--dark-color);">
+                    📋 Мой трекер задач
+                </h2>
+                <button class="btn btn-primary" onclick="addNewTask()">
+                    + Добавить задачу
+                </button>
+            </div>
+            <div class="task-list" id="taskList">
+                <!-- Задачи загрузятся через JavaScript -->
+            </div>
+        </section>
+
+        <!-- Classes -->
+        <section id="courses" style="margin: 4rem 0;">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">
+                🎓 Курсы по классам
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+                 gap: 1rem; margin-top: 2rem;">
+                <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                     text-align: center; cursor: pointer;" onclick="selectGrade(1)">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">1</div>
+                    <div>класс</div>
+                </div>
+                <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                     text-align: center; cursor: pointer;" onclick="selectGrade(2)">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">2</div>
+                    <div>класс</div>
+                </div>
+                <!-- Добавьте остальные классы 3-11 -->
+                <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                     text-align: center; cursor: pointer;" onclick="selectGrade(11)">
+                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">11</div>
+                    <div>класс</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <h3 style="margin-bottom: 1rem;">EduMaster</h3>
+        <p style="margin-bottom: 1rem; opacity: 0.9;">Образовательная платформа для учеников Казахстана</p>
+        <div style="margin-top: 2rem;">
+            <p>📧 support@edumaster.kz</p>
+            <p>📞 +7 (777) 123-45-67</p>
+        </div>
+        <p style="margin-top: 2rem; opacity: 0.7;">© 2024 EduMaster. Все права защищены.</p>
     </footer>
 
+    <script src="script.js"></script>
     <script>
-        function showLogin() {
-            alert('Форма входа будет здесь!');
+        // Дополнительные функции
+        function showCourses() {
+            document.getElementById('courses').scrollIntoView({ behavior: 'smooth' });
         }
         
-        function showRegister() {
-            alert('Форма регистрации будет здесь!');
+        function selectGrade(grade) {
+            if (!currentUser) {
+                alert('Сначала войдите в систему');
+                return;
+            }
+            
+            currentUser.grade = grade;
+            localStorage.setItem('edumaster_current_user', JSON.stringify(currentUser));
+            alert(`Выбран ${grade} класс! Курсы адаптированы под ваш уровень.`);
         }
         
-        // Сохранение в localStorage
-        if (localStorage.getItem('firstVisit')) {
-            console.log('Добро пожаловать обратно!');
-        } else {
-            localStorage.setItem('firstVisit', new Date().toISOString());
-            console.log('Добро пожаловать в EduMaster!');
-        }
+        // Инициализация при загрузке
+        window.onload = function() {
+            loadUserData();
+            loadTasks();
+            console.log('EduMaster успешно загружен!');
+        };
     </script>
 </body>
 </html>
