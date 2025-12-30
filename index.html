@@ -116,31 +116,141 @@
             </div>
         </section>
 
-        <!-- Classes -->
-        <section id="courses" style="margin: 4rem 0;">
-            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">
-                🎓 Курсы по классам
-            </h2>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
-                 gap: 1rem; margin-top: 2rem;">
-                <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
-                     text-align: center; cursor: pointer;" onclick="selectGrade(1)">
-                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">1</div>
-                    <div>класс</div>
-                </div>
-                <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
-                     text-align: center; cursor: pointer;" onclick="selectGrade(2)">
-                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">2</div>
-                    <div>класс</div>
-                </div>
-                <!-- Добавьте остальные классы 3-11 -->
-                <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
-                     text-align: center; cursor: pointer;" onclick="selectGrade(11)">
-                    <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">11</div>
-                    <div>класс</div>
+       <!-- Classes -->
+<section id="courses" style="margin: 4rem 0;">
+    <h2 style="text-align: center; font-size: 2rem; margin-bottom: 2rem;">
+        🎓 Курсы по классам
+    </h2>
+    
+    <!-- Начальная школа -->
+    <div style="margin-bottom: 3rem;">
+        <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.3rem;">
+            🏫 Начальная школа (1-4 классы)
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+             gap: 1rem; margin-top: 1rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #e3f2fd;" 
+                 onclick="selectGrade(1)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">1</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Чтение, письмо, счет
                 </div>
             </div>
-        </section>
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #e3f2fd;" 
+                 onclick="selectGrade(2)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">2</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Математика, русский
+                </div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #e3f2fd;" 
+                 onclick="selectGrade(3)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">3</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Все основные предметы
+                </div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #e3f2fd;" 
+                 onclick="selectGrade(4)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">4</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Подготовка к средней школе
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Средняя школа -->
+    <div style="margin-bottom: 3rem;">
+        <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.3rem;">
+            📚 Средняя школа (5-9 классы)
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+             gap: 1rem; margin-top: 1rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #f3e5f5;" 
+                 onclick="selectGrade(5)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">5</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Начало алгебры
+                </div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #f3e5f5;" 
+                 onclick="selectGrade(6)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">6</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Алгебра, геометрия
+                </div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #f3e5f5;" 
+                 onclick="selectGrade(7)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">7</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Физика, химия
+                </div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #f3e5f5;" 
+                 onclick="selectGrade(8)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">8</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Геометрия, химия
+                </div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #f3e5f5;" 
+                 onclick="selectGrade(9)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">9</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Подготовка к ОГЭ
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Старшая школа -->
+    <div>
+        <h3 style="color: var(--primary-color); margin-bottom: 1rem; font-size: 1.3rem;">
+            🎓 Старшая школа (10-11 классы)
+        </h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+             gap: 1rem; margin-top: 1rem;">
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #e8f5e8;" 
+                 onclick="selectGrade(10)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">10</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Углубленная программа
+                </div>
+            </div>
+            <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); 
+                 text-align: center; cursor: pointer; border: 2px solid #e8f5e8;" 
+                 onclick="selectGrade(11)">
+                <div style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">11</div>
+                <div>класс</div>
+                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.5rem;">
+                    Подготовка к ЕГЭ
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
     </main>
 
     <!-- Footer -->
