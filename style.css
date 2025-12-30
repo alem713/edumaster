@@ -296,3 +296,131 @@ body {
         font-size: 1.5rem;
     }
 }
+/* Добавьте в конец файла style.css */
+
+/* Анимация для карточек классов */
+.grade-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.grade-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.grade-number {
+    font-size: 3.5rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.grade-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.grade-description {
+    color: var(--gray-color);
+    font-size: 0.95rem;
+    line-height: 1.4;
+    padding: 0 1rem;
+}
+
+/* Цвета для разделов школ */
+.school-section {
+    margin-bottom: 4rem;
+}
+
+.school-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid transparent;
+}
+
+.school-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.school-title {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Цвета для разных школ */
+.primary-school .school-header {
+    border-bottom-color: #e3f2fd;
+}
+
+.primary-school .school-icon {
+    background: #e3f2fd;
+}
+
+.middle-school .school-header {
+    border-bottom-color: #f3e5f5;
+}
+
+.middle-school .school-icon {
+    background: #f3e5f5;
+}
+
+.high-school .school-header {
+    border-bottom-color: #e8f5e8;
+}
+
+.high-school .school-icon {
+    background: #e8f5e8;
+}
+
+/* Кнопка выбора класса */
+.select-grade-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 1.5rem;
+}
+
+.select-grade-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .grade-number {
+        font-size: 2.5rem;
+    }
+    
+    .grade-card {
+        padding: 1.5rem;
+    }
+    
+    .school-title {
+        font-size: 1.3rem;
+    }
+}
