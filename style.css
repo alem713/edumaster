@@ -217,3 +217,82 @@ body {
         grid-template-columns: 1fr;
     }
 }
+/* Grade Cards */
+.grade-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.grade-category {
+    margin-bottom: 2rem;
+}
+
+.grade-category h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.grade-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid transparent;
+}
+
+.grade-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.grade-card .number {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.grade-card .description {
+    font-size: 0.875rem;
+    color: var(--gray-color);
+    margin-top: 0.5rem;
+}
+
+/* Category colors */
+.grade-category:first-child .grade-card {
+    border-color: #e3f2fd;
+    background: #f8fdff;
+}
+
+.grade-category:nth-child(2) .grade-card {
+    border-color: #f3e5f5;
+    background: #fcf6ff;
+}
+
+.grade-category:last-child .grade-card {
+    border-color: #e8f5e8;
+    background: #f9fffa;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .grade-grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+    
+    .grade-card {
+        padding: 1rem;
+    }
+    
+    .grade-card .number {
+        font-size: 1.5rem;
+    }
+}
