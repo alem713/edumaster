@@ -1630,3 +1630,127 @@ footer {
 ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
 }
+/* Стили для математического солвера */
+.math-solver-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.math-examples {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.math-example {
+    background: #f8fafc;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.math-example:hover {
+    background: #3b82f6;
+    color: white;
+    border-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.solution-history {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #f1f5f9;
+}
+
+.history-item {
+    padding: 0.75rem;
+    background: #f8fafc;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    border-left: 4px solid #3b82f6;
+}
+
+.solution-complex {
+    font-family: 'Cambria Math', 'Latin Modern Math', STIXMathJax_Main, serif;
+    font-size: 1.2rem;
+    color: #1e293b;
+}
+
+.math-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    border-bottom: 1px dotted #64748b;
+}
+
+.math-tooltip .tooltip-text {
+    visibility: hidden;
+    width: 300px;
+    background: #1e293b;
+    color: white;
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.9rem;
+}
+
+.math-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Анимация загрузки для математического солвера */
+.math-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.math-spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid #f3f3f3;
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    animation: math-spin 1s linear infinite;
+    margin-bottom: 1rem;
+}
+
+@keyframes math-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Адаптивность для математических формул */
+@media (max-width: 768px) {
+    .solution-container {
+        padding: 1rem;
+    }
+    
+    .answer-value {
+        font-size: 1.5rem;
+    }
+    
+    .solution-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+    
+    .solution-type {
+        align-self: flex-start;
+    }
+}
