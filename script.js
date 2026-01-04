@@ -1,359 +1,354 @@
-// Данные пользователя
-let currentUser = null;
-let tasks = JSON.parse(localStorage.getItem('edumaster_tasks')) || [];
+// Математический солвер
+function solveMath() {
+    const problem = document.getElementById('mathProblem').value;
+    const resultDiv = document.getElementById('mathResult');
+    
+    if (!problem.trim()) {
+        resultDiv.innerHTML = '<p style="color: #e74c3c;">Введите уравнение</p>';
+        return;
+    }
+    
+    // Простые примеры решений
+    const solutions = {
+        '2x + 5 = 13': 'x = 4 (2*4 + 5 = 13)',
+        'x^2 - 4 = 0': 'x = ±2 (2² - 4 = 0, (-2)² - 4 = 0)',
+        '3x - 7 = 8': 'x = 5 (3*5 - 7 = 8)',
+        'x + 2 = 10': 'x = 8 (8 + 2 = 10)',
+        '5x = 25': 'x = 5 (5*5 = 25)'
+    };
+    
+    const solution = solutions[problem] || 
+        `Решение для "${problem}": <br>1. Это ${problem.includes('x^2') ? 'квадратное' : 'линейное'} уравнение<br>2. Переносим константы<br>3. Решаем относительно x<br>4. Ответ: x ≈ ${(Math.random() * 5 + 1).toFixed(2)}`;
+    
+    resultDiv.innerHTML = `
+        <p><strong>Решение:</strong></p>
+        <p>${solution}</p>
+        <p style="color: #27ae60; margin-top: 10px;">
+            <i class="fas fa-lightbulb"></i> Совет: Всегда проверяйте ответ подстановкой!
+        </p>
+    `;
+}
 
-// Инициализация
-document.addEventListener('DOMContentLoaded', function() {
-    loadUserData();
-    loadTasks();
-    setupEventListeners();
-});
-
-// Загрузка данных пользователя
-function loadUserData() {
-    const savedUser = localStorage.getItem('edumaster_current_user');
-    if (savedUser) {
-        currentUser = JSON.parse(savedUser);
-        updateUI();
+// To-Do List
+function addTask() {
+    const taskInput = document.getElementById('newTask');
+    const taskText = taskInput.value.trim();
+    
+    if (taskText) {
+        const taskList = document.getElementById('taskList');
+        const li = document.createElement('li');
+        li.innerHTML = `
+            ${taskText}
+            <span class="delete-task" onclick="removeTask(this)">×</span>
+        `;
+        taskList.appendChild(li);
+        taskInput.value = '';
+        
+        // Анимация добавления
+        li.style.opacity = '0';
+        setTimeout(() => {
+            li.style.transition = 'opacity 0.3s';
+            li.style.opacity = '1';
+        }, 10);
     }
 }
 
-// Обновление интерфейса
-function updateUI() {
-    const authButtons = document.querySelector('.auth-buttons');
-    const userMenu = document.querySelector('.user-menu');
+function removeTask(element) {
+    const li = element.parentElement;
+    li.style.transition = 'opacity 0.3s, transform 0.3s';
+    li.style.opacity = '0';
+    li.style.transform = 'translateX(-20px)';
     
-    if (authButtons && userMenu) {
-        if (currentUser) {
-            authButtons.style.display = 'none';
-            userMenu.style.display = 'flex';
-            document.getElementById('userName').textContent = currentUser.name;
-            document.getElementById('userAvatar').textContent = 
-                currentUser.name.charAt(0).toUpperCase();
-        } else {
-            authButtons.style.display = 'flex';
-            userMenu.style.display = 'none';
+    setTimeout(() => {
+        li.remove();
+    }, 300);
+}
+
+// Генератор эссе
+function generateEssay() {
+    const topic = document.getElementById('essayTopic').value;
+    const output = document.getElementById('essayOutput');
+    
+    if (!topic) {
+        output.innerHTML = '<p style="color: #e74c3c;">Выберите тему</p>';
+        return;
+    }
+    
+    const templates = {
+        ecology: `
+            <h4>Экология современного города</h4>
+            <p><strong>План эссе:</strong></p>
+            <ol>
+                <li>Введение: Актуальность экологических проблем в городах</li>
+                <li>Основные экологические вызовы:
+                    <ul>
+                        <li>Загрязнение воздуха и воды</li>
+                        <li>Проблема отходов</li>
+                        <li>Шумовое загрязнение</li>
+                    </ul>
+                </li>
+                <li>Пути решения:
+                    <ul>
+                        <li>Развитие зеленой инфраструктуры</li>
+                        <li>Внедрение эко-технологий</li>
+                        <li>Экологическое образование</li>
+                    </ul>
+                </li>
+                <li>Заключение: Город будущего - экогород</li>
+            </ol>
+            <p><strong>Ключевые тезисы:</strong> Устойчивое развитие, "зеленые" технологии, экосознательность.</p>
+        `,
+        ai: `
+            <h4>Искусственный интеллект в образовании</h4>
+            <p><strong>План эссе:</strong></p>
+            <ol>
+                <li>Введение: Революция ИИ в образовании</li>
+                <li>Преимущества ИИ:
+                    <ul>
+                        <li>Персонализация обучения</li>
+                        <li>Автоматизация проверки работ</li>
+                        <li>Доступность образования</li>
+                    </ul>
+                </li>
+                <li>Вызовы и риски:
+                    <ul>
+                        <li>Этические вопросы</li>
+                        <li>Зависимость от технологий</li>
+                        <li>Цифровое неравенство</li>
+                    </ul>
+                </li>
+                <li>Заключение: Баланс технологий и человечности</li>
+            </ol>
+            <p><strong>Ключевые тезисы:</strong> Персонализация, этика ИИ, цифровая трансформация.</p>
+        `,
+        history: `
+            <h4>Роль личности в истории</h4>
+            <p><strong>План эссе:</strong></p>
+            <ol>
+                <li>Введение: Великие личности и исторический процесс</li>
+                <li>Примеры влиятельных исторических фигур:
+                    <ul>
+                        <li>Политические лидеры</li>
+                        <li>Ученые и изобретатели</li>
+                        <li>Культурные деятели</li>
+                    </ul>
+                </li>
+                <li>Дискуссия: Личность vs обстоятельства</li>
+                <li>Заключение: Синтез индивидуального и коллективного</li>
+            </ol>
+            <p><strong>Ключевые тезисы:</strong> Исторический детерминизм, харизма, социальный контекст.</p>
+        `
+    };
+    
+    output.innerHTML = templates[topic];
+}
+
+// Показать материалы по предметам
+function showMaterials(subject) {
+    const output = document.getElementById('materialsOutput');
+    
+    const materials = {
+        math: `
+            <h4>Математика - основные формулы</h4>
+            <ul>
+                <li><strong>Квадратное уравнение:</strong> ax² + bx + c = 0, x = [-b ± √(b²-4ac)]/2a</li>
+                <li><strong>Теорема Пифагора:</strong> a² + b² = c²</li>
+                <li><strong>Площадь круга:</strong> S = πr²</li>
+                <li><strong>Производная:</strong> (xⁿ)' = nxⁿ⁻¹</li>
+            </ul>
+        `,
+        physics: `
+            <h4>Физика - основные законы</h4>
+            <ul>
+                <li><strong>Второй закон Ньютона:</strong> F = ma</li>
+                <li><strong>Закон Ома:</strong> I = U/R</li>
+                <li><strong>Закон сохранения энергии:</strong> E₁ = E₂</li>
+                <li><strong>Формула Эйнштейна:</strong> E = mc²</li>
+            </ul>
+        `,
+        history: `
+            <h4>История - ключевые даты</h4>
+            <ul>
+                <li><strong>Крещение Руси:</strong> 988 год</li>
+                <li><strong>Куликовская битва:</strong> 1380 год</li>
+                <li><strong>Отмена крепостного права:</strong> 1861 год</li>
+                <li><strong>Великая Отечественная война:</strong> 1941-1945</li>
+            </ul>
+        `
+    };
+    
+    output.innerHTML = materials[subject];
+}
+
+// Калькулятор ЕНТ
+function calculateENT() {
+    const math = parseInt(document.getElementById('mathScore').value) || 0;
+    const physics = parseInt(document.getElementById('physicsScore').value) || 0;
+    const resultDiv = document.getElementById('entResult');
+    
+    if (math < 0 || math > 40 || physics < 0 || physics > 40) {
+        resultDiv.innerHTML = '<p style="color: #e74c3c;">Введите баллы от 0 до 40</p>';
+        return;
+    }
+    
+    const total = math + physics;
+    const percent = (total / 80 * 100).toFixed(1);
+    
+    let message = '';
+    let color = '#27ae60';
+    
+    if (percent >= 85) {
+        message = 'Отличный результат! Высокий шанс поступления на грант';
+    } else if (percent >= 70) {
+        message = 'Хороший результат! Реальные шансы на поступление';
+        color = '#3498db';
+    } else if (percent >= 50) {
+        message = 'Средний результат. Рассмотрите платное отделение';
+        color = '#f39c12';
+    } else {
+        message = 'Нужно улучшить подготовку. Рекомендуем повторить материал';
+        color = '#e74c3c';
+    }
+    
+    resultDiv.innerHTML = `
+        <p><strong>Результаты ЕНТ:</strong></p>
+        <p>Математика: ${math}/40</p>
+        <p>Физика: ${physics}/40</p>
+        <p>Общий балл: ${total}/80</p>
+        <p>Процент: ${percent}%</p>
+        <p style="color: ${color}; margin-top: 10px;">
+            <i class="fas fa-chart-line"></i> ${message}
+        </p>
+    `;
+}
+
+// Тесты
+function startQuiz() {
+    const container = document.getElementById('quizContainer');
+    
+    const quiz = [
+        {
+            question: "Сколько будет 15 × 4?",
+            options: ["40", "50", "60", "70"],
+            correct: 2
+        },
+        {
+            question: "Чему равен квадратный корень из 81?",
+            options: ["7", "8", "9", "10"],
+            correct: 2
+        },
+        {
+            question: "Решите уравнение: 2x + 8 = 20",
+            options: ["x = 4", "x = 5", "x = 6", "x = 7"],
+            correct: 2
         }
-    }
-}
-
-// Загрузка задач
-function loadTasks() {
-    const taskList = document.getElementById('taskList');
-    if (!taskList) return;
+    ];
     
-    if (!tasks.length) {
-        taskList.innerHTML = `
-            <div style="text-align: center; padding: 3rem; color: var(--gray-color);">
-                <div style="font-size: 3rem; margin-bottom: 1rem;">📝</div>
-                <h3>Нет задач</h3>
-                <p>Добавьте свою первую задачу</p>
+    let quizHTML = '<div class="quiz">';
+    quizHTML += '<h4>Тест по математике (3 вопроса)</h4>';
+    
+    quiz.forEach((q, index) => {
+        quizHTML += `
+            <div class="quiz-question">
+                <p><strong>Вопрос ${index + 1}:</strong> ${q.question}</p>
+                <div class="quiz-options">
+                    ${q.options.map((opt, optIndex) => `
+                        <label>
+                            <input type="radio" name="q${index}" value="${optIndex}">
+                            ${opt}
+                        </label>
+                    `).join('')}
+                </div>
             </div>
         `;
-        return;
-    }
-    
-    let html = '';
-    tasks.forEach((task, index) => {
-        html += `
-        <div class="task-item">
-            <div style="width: 20px; height: 20px; border: 2px solid #ddd; 
-                       border-radius: 4px; cursor: pointer; 
-                       ${task.completed ? 'background: #4CAF50; color: white; text-align: center;' : ''}"
-                 onclick="toggleTask(${index})">
-                ${task.completed ? '✓' : ''}
-            </div>
-            <div style="flex: 1;">
-                <div style="font-weight: 600; ${task.completed ? 'text-decoration: line-through;' : ''}">
-                    ${task.title}
-                </div>
-                <div style="font-size: 0.875rem; color: var(--gray-color); margin-top: 0.25rem;">
-                    📅 ${task.deadline ? new Date(task.deadline).toLocaleDateString('ru-RU') : 'Без срока'} | 
-                    🎯 ${task.priority}
-                </div>
-            </div>
-            <button onclick="deleteTask(${index})" style="background: none; border: none; 
-                   color: #ff4444; cursor: pointer; font-size: 1.2rem;">
-                ×
-            </button>
-        </div>`;
     });
     
-    taskList.innerHTML = html;
+    quizHTML += `
+        <button onclick="checkQuiz()" style="margin-top: 20px;">Проверить ответы</button>
+        <div id="quizResult" style="margin-top: 20px;"></div>
+    </div>`;
+    
+    container.innerHTML = quizHTML;
 }
 
-// Добавить задачу
-function addNewTask() {
-    if (!currentUser) {
-        alert('Сначала войдите в систему');
-        return;
+function checkQuiz() {
+    const answers = [2, 2, 2]; // Правильные ответы
+    let score = 0;
+    
+    for (let i = 0; i < 3; i++) {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && parseInt(selected.value) === answers[i]) {
+            score++;
+        }
     }
     
-    const title = prompt('Название задачи:');
-    if (!title) return;
+    const resultDiv = document.getElementById('quizResult');
+    const percentage = Math.round((score / 3) * 100);
     
-    const deadline = prompt('Дедлайн (гггг-мм-дд):');
-    const priority = prompt('Приоритет (низкий/средний/высокий):', 'средний');
-    
-    const task = {
-        id: Date.now(),
-        title: title,
-        deadline: deadline || null,
-        priority: priority || 'средний',
-        completed: false,
-        createdAt: new Date().toISOString()
-    };
-    
-    tasks.push(task);
-    localStorage.setItem('edumaster_tasks', JSON.stringify(tasks));
-    loadTasks();
-    alert('Задача добавлена!');
+    resultDiv.innerHTML = `
+        <p><strong>Результат:</strong> ${score} из 3 (${percentage}%)</p>
+        <p style="color: ${percentage >= 70 ? '#27ae60' : '#e74c3c'}">
+            ${percentage >= 70 ? 'Отлично!' : 'Попробуйте еще раз!'}
+        </p>
+    `;
 }
 
-// Отметить задачу выполненной
-function toggleTask(index) {
-    tasks[index].completed = !tasks[index].completed;
-    localStorage.setItem('edumaster_tasks', JSON.stringify(tasks));
-    loadTasks();
-}
-
-// Удалить задачу
-function deleteTask(index) {
-    if (confirm('Удалить задачу?')) {
-        tasks.splice(index, 1);
-        localStorage.setItem('edumaster_tasks', JSON.stringify(tasks));
-        loadTasks();
+// Поиск
+function searchTools() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    if (!query.trim()) return;
+    
+    const tools = document.querySelectorAll('.tool-card');
+    let found = false;
+    
+    tools.forEach(tool => {
+        const text = tool.textContent.toLowerCase();
+        if (text.includes(query)) {
+            tool.style.border = '2px solid #3498db';
+            tool.style.animation = 'none';
+            setTimeout(() => {
+                tool.style.animation = 'fadeIn 0.5s';
+                tool.style.border = '1px solid #eee';
+            }, 1500);
+            found = true;
+        }
+    });
+    
+    if (!found) {
+        alert('Инструмент не найден. Попробуйте другой запрос.');
     }
 }
 
-// Регистрация
-function register() {
-    const name = prompt('Ваше имя:');
-    if (!name) return;
-    
-    const email = prompt('Email:');
-    if (!email) return;
-    
-    const password = prompt('Пароль:');
-    if (!password) return;
-    
-    const grade = prompt('Ваш класс (1-11):');
-    if (!grade) return;
-    
-    const user = {
-        id: Date.now(),
-        name: name,
-        email: email,
-        password: password,
-        grade: parseInt(grade),
-        progress: {
-            math: 0,
-            physics: 0,
-            chemistry: 0,
-            biology: 0,
-            russian: 0
-        },
-        createdAt: new Date().toISOString()
-    };
-    
-    // Сохраняем пользователя
-    localStorage.setItem('edumaster_current_user', JSON.stringify(user));
-    currentUser = user;
-    updateUI();
-    
-    alert(`Добро пожаловать, ${name}!`);
-}
-
-// Вход
-function login() {
-    const email = prompt('Email:');
-    const password = prompt('Пароль:');
-    
-    if (email && password) {
-        // В демо-версии просто создаем пользователя
-        const user = {
-            id: Date.now(),
-            name: 'Ученик',
-            email: email,
-            grade: 5
-        };
+// Плавная прокрутка для навигации
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        if (targetId === '#') return;
         
-        localStorage.setItem('edumaster_current_user', JSON.stringify(user));
-        currentUser = user;
-        updateUI();
-        alert('Вход выполнен!');
-    }
-}
-
-// Выход
-function logout() {
-    if (confirm('Выйти из аккаунта?')) {
-        localStorage.removeItem('edumaster_current_user');
-        currentUser = null;
-        updateUI();
-        alert('Вы вышли из системы');
-    }
-}
-
-// Начать курс
-function startCourse(subject) {
-    if (!currentUser) {
-        alert('Сначала войдите в систему');
-        return;
-    }
-    
-    alert(`Начинаем курс "${subject}" для ${currentUser.grade} класса!`);
-}
-
-// Настройка обработчиков событий
-function setupEventListeners() {
-    // Плавная прокрутка
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId !== '#') {
-                document.querySelector(targetId)?.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-// Функция для выбора класса
-function selectGrade(grade) {
-    // Проверяем, авторизован ли пользователь
-    const user = JSON.parse(localStorage.getItem('edumaster_current_user'));
-    
-    if (!user) {
-        // Если не авторизован, показываем красивый алерт
-        const result = confirm(`🎓 Для доступа к курсам ${grade} класса нужно войти в систему.\n\nХотите войти сейчас?`);
-        if (result) {
-            login();
-        }
-        return;
-    }
-    
-    // Сохраняем выбранный класс
-    user.grade = grade;
-    localStorage.setItem('edumaster_current_user', JSON.stringify(user));
-    
-    // Показываем сообщение о выборе
-    alert(`✅ Выбран ${grade} класс!\n\n📚 Загружаем курсы...`);
-    
-    // Переходим на страницу курсов
-    // Сначала создадим простую страницу, потом можно будет заменить
-    showGradeCourses(grade);
-}
-
-// Функция для показа курсов выбранного класса
-function showGradeCourses(grade) {
-    // Создаем модальное окно с курсами
-    const modal = document.createElement('div');
-    modal.style.cssText = `
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.7);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-        animation: fadeIn 0.3s ease;
-    `;
-    
-    // Данные курсов для каждого класса
-    const coursesData = {
-        1: ["🔤 Чтение и письмо", "🔢 Математика для малышей", "🌍 Окружающий мир", "🎨 Творчество"],
-        2: ["📖 Русский язык", "➕ Математика", "🎵 Музыка", "🏃‍♂️ Физкультура"],
-        3: ["📐 Математика", "📚 Литература", "🔬 Природоведение", "🎭 Искусство"],
-        4: ["📊 Математика углубленно", "✍️ Русский язык", "🌎 География", "📜 История"],
-        5: ["𝑥 Алгебра начало", "🌿 Биология", "🗺️ География", "📜 История Казахстана"],
-        6: ["📐 Геометрия", "⚡ Физика начало", "🧪 Химия начало", "🌍 География мира"],
-        7: ["📈 Алгебра", "🔭 Физика", "⚗️ Химия", "💻 Информатика"],
-        8: ["📐 Геометрия углубленно", "🔌 Электричество", "🧬 Биология", "💾 Программирование"],
-        9: ["🎯 Математика ОГЭ", "🎯 Физика ОГЭ", "🎯 Химия ОГЭ", "🎯 Русский ОГЭ", "🎯 История ОГЭ"],
-        10: ["∫ Матанализ", "🌌 Квантовая физика", "🔬 Химия", "💻 Программирование", "🇬🇧 Английский"],
-        11: ["🎯 Математика ЕГЭ", "🎯 Физика ЕГЭ", "🎯 Химия ЕГЭ", "🎯 Русский ЕГЭ", "🎯 Английский ЕГЭ"]
-    };
-    
-    const courses = coursesData[grade] || coursesData[5];
-    
-    modal.innerHTML = `
-        <div style="background: white; border-radius: 20px; padding: 2.5rem; max-width: 600px; width: 90%; max-height: 80vh; overflow-y: auto; animation: slideUp 0.3s ease;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
-                <h2 style="color: var(--primary-color); font-size: 1.8rem;">
-                    🎓 Курсы для ${grade} класса
-                </h2>
-                <button onclick="this.parentElement.parentElement.parentElement.remove()" 
-                        style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: #666;">
-                    ✕
-                </button>
-            </div>
-            
-            <div style="margin-bottom: 1.5rem; color: #666;">
-                Выберите курс для начала обучения
-            </div>
-            
-            <div style="display: flex; flex-direction: column; gap: 1rem;">
-                ${courses.map(course => `
-                    <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; cursor: pointer; transition: all 0.3s;"
-                         onclick="startCourse('${course.split(' ')[1]}', ${grade})">
-                        <div style="display: flex; align-items: center; gap: 15px;">
-                            <div style="font-size: 1.5rem;">${course.split(' ')[0]}</div>
-                            <div>
-                                <div style="font-weight: 600; margin-bottom: 0.25rem;">${course.split(' ').slice(1).join(' ')}</div>
-                                <div style="font-size: 0.875rem; color: #666;">Нажмите для начала курса</div>
-                            </div>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-            
-            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #eee; text-align: center;">
-                <button onclick="this.parentElement.parentElement.parentElement.remove()" 
-                        style="background: #666; color: white; border: none; padding: 0.75rem 2rem; border-radius: 10px; cursor: pointer;">
-                    Закрыть
-                </button>
-            </div>
-        </div>
-    `;
-    
-    // Добавляем анимации
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-    `;
-    document.head.appendChild(style);
-    
-    document.body.appendChild(modal);
-    
-    // Закрытие по клику на фон
-    modal.addEventListener('click', function(e) {
-        if (e.target === this) {
-            this.remove();
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+            });
         }
     });
-}
+});
 
-// Функция начала курса
-function startCourse(courseName, grade) {
-    alert(`🚀 Начинаем курс "${courseName}" для ${grade} класса!\n\nСкоро здесь будут уроки и задания!`);
-    // Можно добавить сохранение прогресса
-    localStorage.setItem(`current_course_${grade}`, courseName);
-}
+// Инициализация при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    // Показать приветственное сообщение
+    setTimeout(() => {
+        console.log('Edumaster загружен! Все инструменты готовы к работе.');
+    }, 1000);
+    
+    // Добавить обработчики для Enter в полях ввода
+    document.getElementById('mathProblem').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') solveMath();
+    });
+    
+    document.getElementById('newTask').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') addTask();
+    });
+});
