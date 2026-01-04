@@ -3,228 +3,699 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edumaster — твой цифровой помощник в учебе</title>
+    <title>Edumaster - Твой цифровой помощник в учебе</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/2232/2232688.png">
 </head>
 <body>
-    <div class="container">
-        <header class="main-header">
-            <h1>Edumaster — твой цифровой помощник в учебе</h1>
-            <p class="tagline">Решай задачи, планируй учебу, пиши работы — все в одном месте. Экономь время, учись эффективнее!</p>
-            
-            <div class="stats">
-                <div class="stat">
-                    <div class="number">6</div>
-                    <div class="label">инструментов</div>
-                </div>
-                <div class="stat">
-                    <div class="number">100%</div>
-                    <div class="label">бесплатно</div>
-                </div>
-                <div class="stat">
-                    <div class="number">24/7</div>
-                    <div class="label">доступность</div>
-                </div>
+    <!-- Хедер -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Edumaster</span>
+                <span class="beta-tag">BETA</span>
             </div>
-        </header>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">Главная</a></li>
+                <li><a href="#tools" class="nav-link">Инструменты</a></li>
+                <li><a href="#about" class="nav-link">О нас</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
+            </ul>
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Поиск инструментов..." id="searchInput">
+                <div class="search-tooltip">Поиск активируется в следующем обновлении</div>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
 
-        <section class="how-it-works">
-            <h2>Как это работает</h2>
-            <p class="section-subtitle">Посмотрите демонстрацию основных функций</p>
-            <div class="demo-video">
-                Здесь будет демо-видео
+    <!-- Главный баннер -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="highlight">Edumaster</span> — твой цифровой помощник в учебе
+            </h1>
+            <p class="hero-subtitle">Решай задачи, планируй учебу, пиши работы — все в одном месте. Экономь время, учись эффективнее!</p>
+            <div class="hero-buttons">
+                <a href="#tools" class="btn-primary">
+                    <i class="fas fa-rocket"></i> Начать использовать
+                </a>
+                <a href="#demo" class="btn-secondary">
+                    <i class="fas fa-play-circle"></i> Посмотреть демо
+                </a>
             </div>
-            <div class="steps">
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">6</div>
+                    <div class="stat-text">инструментов</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-text">бесплатно</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-text">доступность</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="floating-element el1">
+                <i class="fas fa-calculator"></i>
+                <span>Солверы</span>
+            </div>
+            <div class="floating-element el2">
+                <i class="fas fa-tasks"></i>
+                <span>Планировщик</span>
+            </div>
+            <div class="floating-element el3">
+                <i class="fas fa-book"></i>
+                <span>Конспекты</span>
+            </div>
+            <div class="main-illustration">
+                <i class="fas fa-brain"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Демо секция -->
+    <section class="demo-section" id="demo">
+        <div class="section-header">
+            <h2 class="section-title">Как это работает</h2>
+            <p class="section-subtitle">Посмотрите демонстрацию основных функций</p>
+        </div>
+        <div class="demo-container">
+            <div class="demo-video-placeholder">
+                <div class="play-button">
+                    <i class="fas fa-play"></i>
+                </div>
+                <p>Здесь будет демо-видео</p>
+            </div>
+            <div class="demo-steps">
                 <div class="step">
                     <div class="step-number">1</div>
-                    <h3>Введите задачу</h3>
-                    <p>Загрузите или введите свою учебную задачу</p>
+                    <div class="step-content">
+                        <h3>Введите задачу</h3>
+                        <p>Загрузите или введите свою учебную задачу</p>
+                    </div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
-                    <h3>Получите решение</h3>
-                    <p>ИИ анализирует и предоставляет пошаговое решение</p>
+                    <div class="step-content">
+                        <h3>Получите решение</h3>
+                        <p>ИИ анализирует и предоставляет пошаговое решение</p>
+                    </div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Учитесь на примерах</h3>
-                    <p>Изучайте объяснения и применяйте знания</p>
+                    <div class="step-content">
+                        <h3>Учитесь на примерах</h3>
+                        <p>Изучайте объяснения и применяйте знания</p>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="tools">
-            <h2>Наши инструменты</h2>
+    <!-- Инструменты -->
+    <section class="tools-section" id="tools">
+        <div class="section-header">
+            <h2 class="section-title">Наши инструменты</h2>
             <p class="section-subtitle">Все необходимое для успешной учебы в одном месте</p>
-
-            <div class="tools-grid">
-                <!-- МАТЕМАТИЧЕСКИЙ СОЛВЕР -->
-                <div class="tool-card">
-                    <h3>Математический солвер</h3>
-                    <p>Решает уравнения, показывает шаги решения, объясняет теорию</p>
-                    
-                    <div class="solver-interface">
-                        <input type="text" class="equation-input" id="mathInput" placeholder="Введите уравнение, например: 2x+5=13">
-                        <button class="solve-btn" onclick="solveMath()">Решить</button>
-                        
-                        <div class="examples">
-                            <span class="example" onclick="useExample('2x+5=13')">2x+5=13</span>
-                            <span class="example" onclick="useExample('x^2-4=0')">x²-4=0</span>
-                            <span class="example" onclick="useExample('3(x-2)=9')">3(x-2)=9</span>
-                        </div>
-                        
-                        <div class="solution-output" id="mathOutput">
-                            Решение появится здесь после ввода уравнения
+        </div>
+        
+        <div class="tools-grid">
+            <!-- Математический солвер -->
+            <div class="tool-card" data-tool="math">
+                <div class="tool-header">
+                    <div class="tool-icon math">
+                        <i class="fas fa-square-root-alt"></i>
+                    </div>
+                    <div class="tool-badge">Популярное</div>
+                </div>
+                <h3 class="tool-title">Математический солвер</h3>
+                <p class="tool-description">Решает уравнения, показывает шаги решения, объясняет теорию</p>
+                
+                <div class="tool-demo">
+                    <div class="demo-input-group">
+                        <input type="text" id="mathInput" placeholder="Введите уравнение, например: 2x + 5 = 13">
+                        <button class="demo-btn" onclick="solveMathProblem()">
+                            <i class="fas fa-bolt"></i> Решить
+                        </button>
+                    </div>
+                    <div class="demo-result" id="mathResult">
+                        <div class="result-placeholder">
+                            <i class="fas fa-lightbulb"></i>
+                            <p>Решение появится здесь после ввода уравнения</p>
                         </div>
                     </div>
                 </div>
+                
+                <div class="tool-examples">
+                    <span class="example-tag" onclick="setMathExample('2x + 5 = 13')">2x+5=13</span>
+                    <span class="example-tag" onclick="setMathExample('x^2 - 4 = 0')">x²-4=0</span>
+                    <span class="example-tag" onclick="setMathExample('3(x-2) = 9')">3(x-2)=9</span>
+                </div>
+            </div>
 
-                <!-- ПЛАНИРОВЩИК ЗАДАЧ -->
-                <div class="tool-card">
-                    <h3>Планировщик задач</h3>
-                    <p>Организуй учебные задачи, дедлайны и напоминания</p>
+            <!-- Планировщик задач -->
+            <div class="tool-card" data-tool="todo">
+                <div class="tool-header">
+                    <div class="tool-icon todo">
+                        <i class="fas fa-tasks"></i>
+                    </div>
+                    <div class="tool-badge">Новое</div>
+                </div>
+                <h3 class="tool-title">Планировщик задач</h3>
+                <p class="tool-description">Организуй учебные задачи, дедлайны и напоминания</p>
+                
+                <div class="tool-demo">
+                    <div class="todo-input-group">
+                        <input type="text" id="taskInput" placeholder="Добавить новую задачу...">
+                        <button class="todo-add-btn" onclick="addNewTask()">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
                     
-                    <div class="planner-interface">
-                        <input type="text" class="task-input" id="taskInput" placeholder="Добавить новую задачу...">
-                        <button class="add-btn" onclick="addTask()">Добавить</button>
-                        
-                        <ul class="task-list" id="taskList">
-                            <!-- Задачи будут добавляться сюда -->
-                        </ul>
-                        
-                        <div class="task-stats">
-                            <span>Всего: <strong id="totalTasks">0</strong></span>
-                            <span>Выполнено: <strong id="completedTasks">0</strong></span>
+                    <div class="todo-list" id="taskList">
+                        <div class="todo-item completed">
+                            <div class="todo-check" onclick="toggleTask(this)">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="todo-text">Подготовить презентацию по истории</div>
+                            <div class="todo-delete" onclick="deleteTask(this)">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-check" onclick="toggleTask(this)">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="todo-text">Решить задачи по физике</div>
+                            <div class="todo-delete" onclick="deleteTask(this)">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <div class="todo-check" onclick="toggleTask(this)">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="todo-text">Написать эссе по литературе</div>
+                            <div class="todo-delete" onclick="deleteTask(this)">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="todo-stats">
+                        <span class="stat-item"><i class="fas fa-list-alt"></i> Всего: <span id="totalTasks">3</span></span>
+                        <span class="stat-item"><i class="fas fa-check-circle"></i> Выполнено: <span id="completedTasks">1</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Помощник для эссе -->
+            <div class="tool-card" data-tool="essay">
+                <div class="tool-header">
+                    <div class="tool-icon essay">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                </div>
+                <h3 class="tool-title">Помощник для эссе</h3>
+                <p class="tool-description">Генерирует структуру, идеи и шаблоны для сочинений</p>
+                
+                <div class="tool-demo">
+                    <div class="essay-controls">
+                        <select id="essayTopic" class="essay-select">
+                            <option value="">Выберите тему эссе</option>
+                            <option value="ecology">Экология современного города</option>
+                            <option value="ai">Искусственный интеллект в образовании</option>
+                            <option value="history">Роль личности в истории</option>
+                            <option value="technology">Технологии будущего</option>
+                        </select>
+                        <button class="essay-generate-btn" onclick="generateEssayPlan()">
+                            <i class="fas fa-magic"></i> Сгенерировать план
+                        </button>
+                    </div>
+                    
+                    <div class="essay-output" id="essayOutput">
+                        <div class="output-placeholder">
+                            <i class="fas fa-file-signature"></i>
+                            <p>Выберите тему и нажмите "Сгенерировать план"</p>
                         </div>
                     </div>
                 </div>
+                
+                <div class="essay-features">
+                    <span><i class="fas fa-check"></i> Структура</span>
+                    <span><i class="fas fa-check"></i> Аргументы</span>
+                    <span><i class="fas fa-check"></i> Примеры</span>
+                </div>
+            </div>
 
-                <!-- ПОМОЩНИК ДЛЯ ЭССЕ -->
-                <div class="tool-card">
-                    <h3>Помощник для эссе</h3>
-                    <p>Генерирует структуру, идеи и шаблоны для сочинений</p>
-                    
-                    <div class="essay-helper">
-                        <input type="text" class="essay-input" id="essayTopic" placeholder="Введите тему эссе">
-                        <button class="generate-btn" onclick="generateEssay()">Сгенерировать план</button>
-                        
-                        <div class="essay-output" id="essayOutput">
-                            Выберите тему и нажмите "Сгенерировать план"
-                        </div>
+            <!-- Конспекты -->
+            <div class="tool-card" data-tool="notes">
+                <div class="tool-header">
+                    <div class="tool-icon notes">
+                        <i class="fas fa-book-open"></i>
                     </div>
                 </div>
-
-                <!-- УМНЫЕ КОНСПЕКТЫ -->
-                <div class="tool-card">
-                    <h3>Умные конспекты</h3>
-                    <p>Структурированные материалы по школьным предметам</p>
-                    
-                    <div class="notes-interface">
-                        <div class="subject-buttons">
-                            <button class="subject-btn" onclick="showNotes('math')">Математика</button>
-                            <button class="subject-btn" onclick="showNotes('physics')">Физика</button>
-                            <button class="subject-btn" onclick="showNotes('history')">История</button>
-                            <button class="subject-btn" onclick="showNotes('biology')">Биология</button>
+                <h3 class="tool-title">Умные конспекты</h3>
+                <p class="tool-description">Структурированные материалы по школьным предметам</p>
+                
+                <div class="tool-demo">
+                    <div class="subjects-grid">
+                        <div class="subject-card" onclick="showSubjectMaterials('math')">
+                            <div class="subject-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="subject-name">Математика</div>
                         </div>
-                        
-                        <div class="notes-output" id="notesOutput">
-                            Выберите предмет для просмотра материалов
+                        <div class="subject-card" onclick="showSubjectMaterials('physics')">
+                            <div class="subject-icon">
+                                <i class="fas fa-atom"></i>
+                            </div>
+                            <div class="subject-name">Физика</div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- КАЛЬКУЛЯТОР ЕНТ -->
-                <div class="tool-card">
-                    <h3>Калькулятор ЕНТ</h3>
-                    <p>Рассчитай свои баллы и шансы на поступление</p>
-                    
-                    <div class="ent-calculator">
-                        <div class="score-inputs">
-                            <input type="number" class="score-input" id="mathScore" placeholder="Матем" min="0" max="40">
-                            <input type="number" class="score-input" id="historyScore" placeholder="История" min="0" max="40">
-                            <input type="number" class="score-input" id="langScore" placeholder="Язык" min="0" max="40">
+                        <div class="subject-card" onclick="showSubjectMaterials('history')">
+                            <div class="subject-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <div class="subject-name">История</div>
                         </div>
-                        <button class="calculate-btn" onclick="calculateENT()">Рассчитать</button>
-                        
-                        <div class="ent-output" id="entOutput">
-                            Настройте баллы и нажмите "Рассчитать"
+                        <div class="subject-card" onclick="showSubjectMaterials('biology')">
+                            <div class="subject-icon">
+                                <i class="fas fa-dna"></i>
+                            </div>
+                            <div class="subject-name">Биология</div>
                         </div>
                     </div>
-                </div>
-
-                <!-- ТЕСТЫ И ВИКТОРИНЫ -->
-                <div class="tool-card">
-                    <h3>Тесты и викторины</h3>
-                    <p>Проверь знания, подготовься к экзаменам</p>
                     
-                    <div class="quiz-interface">
-                        <div class="quiz-buttons">
-                            <button class="quiz-btn" onclick="startQuiz('math')">Математика (5 вопросов)</button>
-                            <button class="quiz-btn" onclick="startQuiz('history')">История (5 вопросов)</button>
-                        </div>
-                        
-                        <div class="quiz-output" id="quizOutput">
-                            Выберите предмет для начала теста
+                    <div class="materials-output" id="materialsOutput">
+                        <div class="output-placeholder">
+                            <i class="fas fa-book-reader"></i>
+                            <p>Выберите предмет для просмотра материалов</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <section class="about">
-            <h2>О проекте Edumaster</h2>
-            <p class="about-text">Наша миссия — сделать образование доступным и эффективным</p>
-            
-            <div class="features">
-                <div class="feature">
-                    <h4>Наша миссия</h4>
+            <!-- Калькулятор ЕНТ -->
+            <div class="tool-card" data-tool="ent">
+                <div class="tool-header">
+                    <div class="tool-icon ent">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                </div>
+                <h3 class="tool-title">Калькулятор ЕНТ</h3>
+                <p class="tool-description">Рассчитай свои баллы и шансы на поступление</p>
+                
+                <div class="tool-demo">
+                    <div class="ent-calculator">
+                        <div class="ent-input">
+                            <label for="mathScore"><i class="fas fa-square-root-alt"></i> Математика</label>
+                            <input type="range" id="mathScore" min="0" max="40" value="25">
+                            <span class="score-value" id="mathValue">25</span>
+                        </div>
+                        
+                        <div class="ent-input">
+                            <label for="physicsScore"><i class="fas fa-atom"></i> Физика</label>
+                            <input type="range" id="physicsScore" min="0" max="40" value="20">
+                            <span class="score-value" id="physicsValue">20</span>
+                        </div>
+                        
+                        <div class="ent-input">
+                            <label for="historyScore"><i class="fas fa-landmark"></i> История</label>
+                            <input type="range" id="historyScore" min="0" max="40" value="30">
+                            <span class="score-value" id="historyValue">30</span>
+                        </div>
+                        
+                        <button class="ent-calculate-btn" onclick="calculateEntScore()">
+                            <i class="fas fa-calculator"></i> Рассчитать баллы
+                        </button>
+                        
+                        <div class="ent-result" id="entResult">
+                            <div class="result-placeholder">
+                                <i class="fas fa-chart-bar"></i>
+                                <p>Настройте баллы и нажмите "Рассчитать"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Тесты -->
+            <div class="tool-card" data-tool="quiz">
+                <div class="tool-header">
+                    <div class="tool-icon quiz">
+                        <i class="fas fa-question-circle"></i>
+                    </div>
+                </div>
+                <h3 class="tool-title">Тесты и викторины</h3>
+                <p class="tool-description">Проверь знания, подготовься к экзаменам</p>
+                
+                <div class="tool-demo">
+                    <div class="quiz-selection">
+                        <div class="quiz-option" onclick="startMathQuiz()">
+                            <div class="quiz-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div class="quiz-info">
+                                <h4>Математика</h4>
+                                <p>5 вопросов · Средний уровень</p>
+                            </div>
+                            <div class="quiz-start">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="quiz-option" onclick="startHistoryQuiz()">
+                            <div class="quiz-icon">
+                                <i class="fas fa-landmark"></i>
+                            </div>
+                            <div class="quiz-info">
+                                <h4>История</h4>
+                                <p>5 вопросов · Легкий уровень</p>
+                            </div>
+                            <div class="quiz-start">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-container" id="quizContainer">
+                        <div class="quiz-placeholder">
+                            <i class="fas fa-brain"></i>
+                            <p>Выберите предмет для начала теста</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О нас -->
+    <section class="about-section" id="about">
+        <div class="section-header">
+            <h2 class="section-title">О проекте Edumaster</h2>
+            <p class="section-subtitle">Наша миссия — сделать образование доступным и эффективным</p>
+        </div>
+        
+        <div class="about-content">
+            <div class="about-text">
+                <div class="about-mission">
+                    <h3><i class="fas fa-bullseye"></i> Наша миссия</h3>
                     <p>Мы создаем инструменты, которые помогают студентам и школьникам преодолевать учебные трудности, экономить время и учиться с удовольствием.</p>
                 </div>
-                <div class="feature">
-                    <h4>Наши ценности</h4>
-                    <p><strong>Качество образования</strong> — Точные решения и понятные объяснения</p>
-                    <p><strong>Доступность</strong> — Бесплатные инструменты для всех</p>
-                    <p><strong>Инновации</strong> — Современные технологии в образовании</p>
+                
+                <div class="about-values">
+                    <h3><i class="fas fa-star"></i> Наши ценности</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h4>Качество образования</h4>
+                            <p>Точные решения и понятные объяснения</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h4>Доступность</h4>
+                            <p>Бесплатные инструменты для всех</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-rocket"></i>
+                            </div>
+                            <h4>Инновации</h4>
+                            <p>Современные технологии в образовании</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="feature">
-                    <h4>Для кого мы создаем</h4>
-                    <p><strong>Студенты вузов</strong> — Решение сложных задач, подготовка к экзаменам</p>
-                    <p><strong>Школьники</strong> — Помощь с домашними заданиями, подготовка к ЕНТ</p>
+                
+                <div class="about-team">
+                    <h3><i class="fas fa-users"></i> Для кого мы создаем</h3>
+                    <div class="team-targets">
+                        <div class="target">
+                            <div class="target-icon student">
+                                <i class="fas fa-user-graduate"></i>
+                            </div>
+                            <div class="target-info">
+                                <h4>Студенты вузов</h4>
+                                <p>Решение сложных задач, подготовка к экзаменам</p>
+                            </div>
+                        </div>
+                        <div class="target">
+                            <div class="target-icon school">
+                                <i class="fas fa-school"></i>
+                            </div>
+                            <div class="target-info">
+                                <h4>Школьники</h4>
+                                <p>Помощь с домашними заданиями, подготовка к ЕНТ</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+            
+            <div class="about-features">
+                <div class="feature-highlight">
+                    <h3><i class="fas fa-trophy"></i> Почему выбирают Edumaster?</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> <strong>Все в одном месте:</strong> Не нужно переключаться между сервисами</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Объяснения, а не ответы:</strong> Учим понимать, а не списывать</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Адаптация под вас:</strong> Учитываем ваш уровень знаний</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Без рекламы:</strong> Чистый и удобный интерфейс</li>
+                        <li><i class="fas fa-check-circle"></i> <strong>Постоянное развитие:</strong> Новые функции каждую неделю</li>
+                    </ul>
+                </div>
+                
+                <div class="development-roadmap">
+                    <h3><i class="fas fa-road"></i> План развития</h3>
+                    <div class="roadmap-timeline">
+                        <div class="roadmap-item current">
+                            <div class="roadmap-date">Сейчас</div>
+                            <div class="roadmap-content">
+                                <h4>Бета-версия</h4>
+                                <p>Основные инструменты, математический солвер</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-date">2024</div>
+                            <div class="roadmap-content">
+                                <h4>Версия 2.0</h4>
+                                <p>Мобильное приложение, ИИ-помощник</p>
+                            </div>
+                        </div>
+                        <div class="roadmap-item">
+                            <div class="roadmap-date">2025</div>
+                            <div class="roadmap-content">
+                                <h4>Полная версия</h4>
+                                <p>Все предметы, офлайн-режим, соревнования</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <footer class="main-footer">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Контакты</h4>
-                    <p>Свяжитесь с нами для сотрудничества или предложений</p>
-                    <p class="email">support@edumaster.kz</p>
-                    <p>Отвечаем в течение 24 часов</p>
+    <!-- Контакты -->
+    <section class="contact-section" id="contact">
+        <div class="section-header">
+            <h2 class="section-title">Контакты</h2>
+            <p class="section-subtitle">Свяжитесь с нами для сотрудничества или предложений</p>
+        </div>
+        
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <p>support@edumaster.kz</p>
+                        <p class="contact-note">Отвечаем в течение 24 часов</p>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Локация</h4>
-                    <p>Казахстан, Алматы</p>
-                    <p>Работаем удаленно по всему Казахстану</p>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Локация</h3>
+                        <p>Казахстан, Алматы</p>
+                        <p class="contact-note">Работаем удаленно по всему Казахстану</p>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Часы работы</h4>
-                    <p>Круглосуточно, 7 дней в неделю</p>
-                    <p>Сервис доступен всегда</p>
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Часы работы</h3>
+                        <p>Круглосуточно, 7 дней в неделю</p>
+                        <p class="contact-note">Сервис доступен всегда</p>
+                    </div>
+                </div>
+                
+                <div class="contact-social">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon github">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="#" class="social-icon telegram">
+                            <i class="fab fa-telegram"></i>
+                            <span>Telegram</span>
+                        </a>
+                        <a href="#" class="social-icon youtube">
+                            <i class="fab fa-youtube"></i>
+                            <span>YouTube</span>
+                        </a>
+                        <a href="#" class="social-icon instagram">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="contact-form-container">
+                <div class="form-header">
+                    <h3><i class="fas fa-paper-plane"></i> Отправить сообщение</h3>
+                    <p>Есть вопросы или предложения? Напишите нам!</p>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Ваше имя</label>
+                        <input type="text" id="name" placeholder="Как к вам обращаться?" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Ваш email для ответа" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Тема</label>
+                        <select id="subject">
+                            <option value="">Выберите тему</option>
+                            <option value="suggestion">Предложение по улучшению</option>
+                            <option value="bug">Сообщить об ошибке</option>
+                            <option value="cooperation">Сотрудничество</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Сообщение</label>
+                        <textarea id="message" rows="5" placeholder="Опишите вашу идею или вопрос..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Отправить сообщение
+                    </button>
+                    
+                    <div class="form-footer">
+                        <p><i class="fas fa-shield-alt"></i> Ваши данные защищены и не будут переданы третьим лицам</p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>Edumaster</span>
+                    </div>
+                    <p class="footer-tagline">Твой цифровой помощник в учебе. Эффективно. Просто. Бесплатно.</p>
+                    <div class="footer-newsletter">
+                        <input type="email" placeholder="Ваш email для обновлений">
+                        <button><i class="fas fa-paper-plane"></i> Подписаться</button>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-column">
+                        <h4>Инструменты</h4>
+                        <ul>
+                            <li><a href="#tools">Математический солвер</a></li>
+                            <li><a href="#tools">Планировщик задач</a></li>
+                            <li><a href="#tools">Помощник для эссе</a></li>
+                            <li><a href="#tools">Конспекты</a></li>
+                            <li><a href="#tools">Калькулятор ЕНТ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-column">
+                        <h4>Компания</h4>
+                        <ul>
+                            <li><a href="#about">О нас</a></li>
+                            <li><a href="#about">Миссия и ценности</a></li>
+                            <li><a href="#about">План развития</a></li>
+                            <li><a href="#contact">Контакты</a></li>
+                            <li><a href="#contact">Сотрудничество</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="link-column">
+                        <h4>Помощь</h4>
+                        <ul>
+                            <li><a href="#">Частые вопросы</a></li>
+                            <li><a href="#">Инструкции</a></li>
+                            <li><a href="#">Политика конфиденциальности</a></li>
+                            <li><a href="#">Условия использования</a></li>
+                            <li><a href="#contact">Техподдержка</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>© 2023 Edumaster. Все права защищены.</p>
+                <div class="copyright">
+                    <p>© 2024 Edumaster. Все права защищены. Проект создан для помощи студентам и школьникам.</p>
+                    <p class="build-info">Версия 1.0.0 · Последнее обновление: Сегодня</p>
+                </div>
+                
+                <div class="footer-actions">
+                    <a href="#" class="action-link">
+                        <i class="fas fa-mobile-alt"></i> Мобильная версия
+                    </a>
+                    <a href="#" class="action-link">
+                        <i class="fas fa-globe"></i> Русский
+                    </a>
+                    <a href="https://github.com/alem713/edumaster" class="action-link" target="_blank">
+                        <i class="fab fa-github"></i> Исходный код
+                    </a>
+                </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 
-    <!-- Подключаем библиотеку Math.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.10.0/math.js"></script>
-    <!-- Наш JavaScript -->
+    <!-- Кнопка вверх -->
+    <button class="scroll-to-top" id="scrollToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Скрипты -->
     <script src="script.js"></script>
 </body>
 </html>
