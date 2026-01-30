@@ -3,27 +3,207 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edumaster — Платформа обучения</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;900&display=swap" rel="stylesheet">
+    <title>Edumaster — Твой цифровой наставник</title>
+    <style>
+        /* Весь дизайн теперь здесь, чтобы ничего не терялось */
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --accent: #6366f1;
+            --gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+            --text: #f1f5f9;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Навигация */
+        nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links button {
+            background: transparent;
+            border: none;
+            color: #94a3b8;
+            margin-left: 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .nav-links button:hover { color: white; }
+
+        /* Контент */
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .content-card {
+            background: var(--card);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        h2 { font-size: 2rem; margin-bottom: 1.5rem; }
+
+        /* Элементы управления */
+        input, textarea {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .primary-btn {
+            background: var(--gradient);
+            border: none;
+            padding: 1rem 2.5rem;
+            color: white;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .primary-btn:hover { transform: scale(1.02); }
+
+        /* Сетка курсов */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .item {
+            background: rgba(255,255,255,0.03);
+            padding: 1.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+
+        .item:hover { border-color: var(--accent); background: rgba(255,255,255,0.07); }
+
+        #result-box {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--accent);
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
+
     <nav>
         <div class="logo">EDUMASTER</div>
-        <div class="menu">
-            <button onclick="showSection('ai-helper')">🤖 ИИ-Помощник</button>
-            <button onclick="showSection('courses')">📚 Курсы</button>
-            <button onclick="showSection('ent-calc')">🧮 Калькулятор ЕНТ</button>
+        <div class="nav-links">
+            <button onclick="render('ai')">🤖 ИИ-Помощник</button>
+            <button onclick="render('courses')">📚 Курсы</button>
+            <button onclick="render('ent')">🧮 ЕНТ</button>
         </div>
     </nav>
 
-    <main id="main-content">
-        <section id="hero" class="active-section">
-            <h1>Твой успех в учебе начинается здесь</h1>
-            <p>Выбери инструмент в меню выше, чтобы начать работу.</p>
-        </section>
+    <main>
+        <div id="app" class="content-card">
+            <h2>Добро пожаловать в Edumaster</h2>
+            <p style="color: #94a3b8">Выбери раздел в верхнем меню, чтобы начать обучение.</p>
+        </div>
     </main>
 
-    <script src="script.js"></script>
+    <script>
+        const app = document.getElementById('app');
+
+        function render(section) {
+            if (section === 'ai') {
+                app.innerHTML = `
+                    <h2>🤖 Помощник по ДЗ</h2>
+                    <p style="color:#94a3b8; margin-bottom: 1rem;">Вставь условие задачи, и я помогу разобраться.</p>
+                    <textarea id="quest" placeholder="Например: Реши уравнение x^2 - 4 = 0"></textarea>
+                    <button class="primary-btn" onclick="ask()">Решить задачу</button>
+                    <div id="result-box" style="display:none"></div>
+                `;
+            } else if (section === 'ent') {
+                app.innerHTML = `
+                    <h2>🧮 Калькулятор ЕНТ</h2>
+                    <div style="max-width: 400px; margin: 0 auto;">
+                        <input type="number" id="n1" placeholder="Мат. грамотность (0-10)">
+                        <input type="number" id="n2" placeholder="Грамотность чтения (0-10)">
+                        <input type="number" id="n3" placeholder="История Казахстана (0-20)">
+                        <input type="number" id="n4" placeholder="Предмет 1 (0-50)">
+                        <input type="number" id="n5" placeholder="Предмет 2 (0-50)">
+                        <button class="primary-btn" onclick="calc()">Узнать результат</button>
+                        <div id="result-box" style="display:none"></div>
+                    </div>
+                `;
+            } else if (section === 'courses') {
+                app.innerHTML = `
+                    <h2>📚 Мини-курсы</h2>
+                    <div class="grid">
+                        <div class="item"><h3>5-9 классы</h3><p>Основы и база</p></div>
+                        <div class="item"><h3>10-11 классы</h3><p>Подготовка к вузу</p></div>
+                        <div class="item" style="background:rgba(168, 85, 247, 0.1)"><h3>🚀 ЕНТ 2026</h3><p>Интенсив-курс</p></div>
+                    </div>
+                `;
+            }
+        }
+
+        function ask() {
+            const res = document.getElementById('result-box');
+            res.style.display = 'block';
+            res.innerText = "Edumaster анализирует вопрос... Скоро здесь появится подробный разбор!";
+        }
+
+        function calc() {
+            const total = (+document.getElementById('n1').value || 0) + 
+                          (+document.getElementById('n2').value || 0) + 
+                          (+document.getElementById('n3').value || 0) + 
+                          (+document.getElementById('n4').value || 0) + 
+                          (+document.getElementById('n5').value || 0);
+            const res = document.getElementById('result-box');
+            res.style.display = 'block';
+            res.innerText = "Твой суммарный балл: " + total + " / 140";
+        }
+    </script>
 </body>
 </html>
