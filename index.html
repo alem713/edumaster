@@ -3,132 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edumaster - Цифровой Помощник</title>
-    <style>
-        /* Современный темный дизайн */
-        body {
-            background: #0f172a;
-            color: #f8fafc;
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        header {
-            background: rgba(30, 41, 59, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 20px;
-            text-align: center;
-            border-bottom: 1px solid #334155;
-        }
-        .nav-menu {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 15px;
-        }
-        .btn {
-            background: #6366f1;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn:hover { background: #4f46e5; }
-        
-        #app-content {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .card {
-            background: #1e293b;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            border: 1px solid #334155;
-        }
-        input {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            background: #0f172a;
-            border: 1px solid #334155;
-            color: white;
-            border-radius: 8px;
-        }
-    </style>
+    <title>Edumaster — Твой цифровой наставник</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <nav>
+        <div class="logo">EDUMASTER</div>
+        <div class="nav-links">
+            <button onclick="showSection('ai')">🤖 AI Помощник</button>
+            <button onclick="showSection('courses')">📚 Курсы</button>
+            <button onclick="showSection('ent')">🧮 ЕНТ</button>
+        </div>
+    </nav>
 
-<header>
-    <h1 style="margin:0; color:#6366f1;">EDUMASTER</h1>
-    <div class="nav-menu">
-        <button class="btn" onclick="show('ai')">🤖 AI Помощник</button>
-        <button class="btn" onclick="show('ent')">🧮 ЕНТ</button>
-        <button class="btn" onclick="show('edu')">📚 Курсы</button>
-    </div>
-</header>
+    <main id="app">
+        <div class="welcome-card">
+            <h1>Учись на максимум 🚀</h1>
+            <p>Добро пожаловать в Edumaster. Выбери инструмент в меню, чтобы начать путь к успеху.</p>
+        </div>
+    </main>
 
-<div id="app-content">
-    <div class="card">
-        <h2>Привет! 👋</h2>
-        <p>Я твой новый цифровой помощник. Выбери нужный раздел в меню выше, чтобы начать.</p>
-    </div>
-</div>
-
-<script>
-    function show(type) {
-        const content = document.getElementById('app-content');
-        if(type === 'ent') {
-            content.innerHTML = `
-                <div class="card">
-                    <h2>Калькулятор ЕНТ</h2>
-                    <input type="number" id="v1" placeholder="История Казахстана">
-                    <input type="number" id="v2" placeholder="Мат. грамотность">
-                    <input type="number" id="v3" placeholder="Профиль 1">
-                    <input type="number" id="v4" placeholder="Профиль 2">
-                    <button class="btn" style="width:100%" onclick="calc()">Посчитать</button>
-                    <h3 id="res" style="margin-top:20px; color:#6366f1;"></h3>
-                </div>`;
-        } else if(type === 'ai') {
-            content.innerHTML = `
-                <div class="card">
-                    <h2>🤖 Помощник по ДЗ</h2>
-                    <textarea style="width:100%; height:100px; background:#0f172a; color:white; border-radius:8px; padding:10px;" placeholder="Впиши вопрос..."></textarea>
-                    <button class="btn" style="width:100%; margin-top:10px;" onclick="alert('Думаю...')">Решить</button>
-                </div>`;
-        } else {
-            content.innerHTML = `
-                <div class="card">
-                    <h2>📚 Курсы</h2>
-                    <p>Доступные программы:</p>
-                    <ul style="text-align:left; color:#94a3b8;">
-                        <li>Математика (5-11 класс)</li>
-                        <li>Подготовка к ЕНТ (Интенсив)</li>
-                        <li>Английский для школьников</li>
-                    </ul>
-                </div>`;
-        }
-    }
-
-    function calc() {
-        const total = Number(document.getElementById('v1').value) + 
-                      Number(document.getElementById('v2').value) + 
-                      Number(document.getElementById('v3').value) + 
-                      Number(document.getElementById('v4').value);
-        document.getElementById('res').innerText = "Результат: " + total + " баллов";
-    }
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
