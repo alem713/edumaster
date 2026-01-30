@@ -3,110 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edumaster Pro</title>
+    <title>Edumaster - Цифровой Помощник</title>
     <style>
+        /* Современный темный дизайн */
         body {
-            background: #020617;
+            background: #0f172a;
             color: #f8fafc;
-            font-family: 'Segoe UI', sans-serif;
+            font-family: 'Inter', sans-serif;
             margin: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
-        /* Светящийся фон */
-        .glow {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 100%);
-            z-index: -1;
+        header {
+            background: rgba(30, 41, 59, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #334155;
         }
-        nav {
-            display: flex; justify-content: space-around; padding: 20px;
-            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
         }
-        .nav-btn {
-            background: none; border: 1px solid rgba(255,255,255,0.2);
-            color: white; padding: 8px 16px; border-radius: 20px; cursor: pointer;
+        .btn {
+            background: #6366f1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
             transition: 0.3s;
         }
-        .nav-btn:hover { background: #6366f1; border-color: #6366f1; }
+        .btn:hover { background: #4f46e5; }
         
-        .main-card {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(20px);
-            margin: auto; padding: 40px; border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 600px; width: 90%; text-align: center;
-            box-shadow: 0 0 40px rgba(99, 102, 241, 0.2);
+        #app-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
-        input, textarea {
-            width: 100%; padding: 15px; margin: 10px 0;
-            background: rgba(0,0,0,0.3); border: 1px solid #334155;
-            border-radius: 12px; color: white; box-sizing: border-box;
+        .card {
+            background: #1e293b;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #334155;
         }
-        .action-btn {
-            width: 100%; padding: 15px; border: none; border-radius: 12px;
-            background: linear-gradient(90deg, #6366f1, #a855f7);
-            color: white; font-weight: bold; cursor: pointer; font-size: 16px;
+        input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #0f172a;
+            border: 1px solid #334155;
+            color: white;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
-    <div class="glow"></div>
-    <nav>
-        <button class="nav-btn" onclick="openTab('ai')">🤖 AI Помощник</button>
-        <button class="nav-btn" onclick="openTab('ent')">🧮 ЕНТ</button>
-        <button class="nav-btn" onclick="openTab('edu')">📚 Курсы</button>
-    </nav>
-    <div id="content" style="padding: 20px; display: flex; flex: 1;">
-        <div class="main-card">
-            <h1 style="background: linear-gradient(90deg, #6366f1, #a855f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">EDUMASTER AI</h1>
-            <p>Твой личный цифровой наставник готов к работе. Выбери инструмент выше.</p>
-        </div>
-    </div>
 
-    <script>
-        function openTab(tab) {
-            const container = document.getElementById('content');
-            if(tab === 'ent') {
-                container.innerHTML = `
-                    <div class="main-card">
-                        <h2>Калькулятор ЕНТ</h2>
-                        <input type="number" id="e1" placeholder="История Казахстана">
-                        <input type="number" id="e2" placeholder="Мат. грамотность">
-                        <input type="number" id="e3" placeholder="Грамотность чтения">
-                        <input type="number" id="e4" placeholder="Профиль 1">
-                        <input type="number" id="e5" placeholder="Профиль 2">
-                        <button class="action-btn" onclick="res()">Посчитать баллы</button>
-                        <h2 id="total" style="color:#a855f7"></h2>
-                    </div>`;
-            } else if(tab === 'ai') {
-                container.innerHTML = `
-                    <div class="main-card">
-                        <h2>🤖 AI Помощник по ДЗ</h2>
-                        <textarea id="task" placeholder="Напиши условие задачи..."></textarea>
-                        <button class="action-btn" onclick="alert('Анализирую задачу...')">Решить</button>
-                    </div>`;
-            } else {
-                container.innerHTML = `
-                    <div class="main-card">
-                        <h2>📚 Мини-курсы</h2>
-                        <div style="display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;">
-                            <div style="padding:20px; border:1px solid #444; border-radius:15px">5-9 Класс</div>
-                            <div style="padding:20px; border:1px solid #444; border-radius:15px">10-11 Класс</div>
-                            <div style="padding:20px; border:1px solid #6366f1; border-radius:15px; background: rgba(99,102,241,0.1)">ЕНТ 2026</div>
-                        </div>
-                    </div>`;
-            }
+<header>
+    <h1 style="margin:0; color:#6366f1;">EDUMASTER</h1>
+    <div class="nav-menu">
+        <button class="btn" onclick="show('ai')">🤖 AI Помощник</button>
+        <button class="btn" onclick="show('ent')">🧮 ЕНТ</button>
+        <button class="btn" onclick="show('edu')">📚 Курсы</button>
+    </div>
+</header>
+
+<div id="app-content">
+    <div class="card">
+        <h2>Привет! 👋</h2>
+        <p>Я твой новый цифровой помощник. Выбери нужный раздел в меню выше, чтобы начать.</p>
+    </div>
+</div>
+
+<script>
+    function show(type) {
+        const content = document.getElementById('app-content');
+        if(type === 'ent') {
+            content.innerHTML = `
+                <div class="card">
+                    <h2>Калькулятор ЕНТ</h2>
+                    <input type="number" id="v1" placeholder="История Казахстана">
+                    <input type="number" id="v2" placeholder="Мат. грамотность">
+                    <input type="number" id="v3" placeholder="Профиль 1">
+                    <input type="number" id="v4" placeholder="Профиль 2">
+                    <button class="btn" style="width:100%" onclick="calc()">Посчитать</button>
+                    <h3 id="res" style="margin-top:20px; color:#6366f1;"></h3>
+                </div>`;
+        } else if(type === 'ai') {
+            content.innerHTML = `
+                <div class="card">
+                    <h2>🤖 Помощник по ДЗ</h2>
+                    <textarea style="width:100%; height:100px; background:#0f172a; color:white; border-radius:8px; padding:10px;" placeholder="Впиши вопрос..."></textarea>
+                    <button class="btn" style="width:100%; margin-top:10px;" onclick="alert('Думаю...')">Решить</button>
+                </div>`;
+        } else {
+            content.innerHTML = `
+                <div class="card">
+                    <h2>📚 Курсы</h2>
+                    <p>Доступные программы:</p>
+                    <ul style="text-align:left; color:#94a3b8;">
+                        <li>Математика (5-11 класс)</li>
+                        <li>Подготовка к ЕНТ (Интенсив)</li>
+                        <li>Английский для школьников</li>
+                    </ul>
+                </div>`;
         }
-        function res() {
-            const sum = Number(document.getElementById('e1').value) + Number(document.getElementById('e2').value) + 
-                        Number(document.getElementById('e3').value) + Number(document.getElementById('e4').value) + 
-                        Number(document.getElementById('e5').value);
-            document.getElementById('total').innerText = "Итого: " + sum + " / 140";
-        }
-    </script>
+    }
+
+    function calc() {
+        const total = Number(document.getElementById('v1').value) + 
+                      Number(document.getElementById('v2').value) + 
+                      Number(document.getElementById('v3').value) + 
+                      Number(document.getElementById('v4').value);
+        document.getElementById('res').innerText = "Результат: " + total + " баллов";
+    }
+</script>
+
 </body>
 </html>
